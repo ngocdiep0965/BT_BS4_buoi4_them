@@ -1,21 +1,3 @@
-// if (slg > 100){
-//     tongTien = (49 * donGia) + (51 * donGia * 92/100) + ((slg - 100) * donGia * 88/100);
-//     info +=  "<div> Tổng tiền phải trả là: " + tongTien + "đ</div>";
-//     document.getElementById("show").innerHTML = info;
-// } else if (slg >= 50 && slg <= 100 ) {
-//         tongTien = (49 * donGia) + ((slg - 49) * donGia * 92/100);
-//         info +=  "<div> Tổng tiền phải trả là: " + tongTien + "đ</div>";
-//         document.getElementById("show").innerHTML = info;
-//     } else if (slg > 0 && slg < 50 ){
-//             tongTien = slg * donGia;
-//             info +=  "<div> Tổng tiền phải trả là: " + tongTien + "đ</div>";
-//             document.getElementById("show").innerHTML = info;
-//         } else {
-//                 document.getElementById("show").innerHTML = "Bạn đang nhập số lượng là 0 hoặc nhỏ hơn 0!";
-//             }
-
-
-
 // bài slide 24
 document.getElementById("click1").onclick = function(event) {
     event.preventDefault();
@@ -41,9 +23,6 @@ document.getElementById("click2").onclick = function(event) {
     var num2 = document.getElementById("num2").value;
     var num3 = document.getElementById("num3").value;
     var num0;
-    parseInt(num1)
-    parseInt(num2)
-    parseInt(num3)
     if (parseInt(num1) < parseInt(num2)){
         if (parseInt(num2) < parseInt(num3)){
             document.getElementById("show2").innerHTML = num1 + "; " + num2 + "; " + num3;            
@@ -196,4 +175,171 @@ document.getElementById("click4").onclick = function(event) {
             }
         }
     }
+}
+
+// bài 4 slide 31
+document.getElementById("click5").onclick = function(event) {
+    event.preventDefault();
+    var a = parseInt(document.getElementById("txtNumA").value);
+    var b = parseInt(document.getElementById("txtNumB").value);
+    var c = parseInt(document.getElementById("txtNumC").value);
+    var soSanhTGcan = ((a == b && a != c) || (a == c && a != b) || (b == c && b != a));
+    var soSanhTGvuong = ((a*a == b*b + c*c) || (b*b == a*a + c*c) || (c*c == a*a + b*b))
+    // console.log(soSanhTGvuong);
+    if (a == b && a == c && b == c) {
+        document.getElementById("show5").innerHTML = "Tam giác đều";
+    } else if (soSanhTGcan == true && soSanhTGvuong == true) {
+        document.getElementById("show5").innerHTML = "Tam giác vuông cân";
+    } else if (soSanhTGcan == true){
+        document.getElementById("show5").innerHTML = "Tam giác cân";
+    } else if (soSanhTGvuong == true){
+        document.getElementById("show5").innerHTML = "Tam giác vuông";
+    } else {
+        document.getElementById("show5").innerHTML = "Tam giác thường";
+    }
+
+    
+}
+
+// bài 1 slide 32
+document.getElementById("click6").onclick = function(event) {
+    event.preventDefault();
+    var dateInput = document.getElementById("today").value;
+    const year = dateInput.split('-', 2) ;
+    // const month = parseInt(dateInput.split('-',2)) ;
+    // const day = parseInt(dateInput.split('-',3)) ;
+    console.log(year);
+    // console.log(month);
+    // console.log(day);
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+// bài 3 slide 32
+document.getElementById("click8").onclick = function(event) {
+    event.preventDefault();
+    var soNguyen = parseInt(document.getElementById("soNguyen").value);
+    var hangTram = parseInt(soNguyen / 100); 
+    var hangChuc = parseInt((soNguyen / 10) - (hangTram * 10)); 
+    var hangDonVi = parseInt((soNguyen % 10)); 
+    var cachDocHangTram, cachDocHangChuc, cachDocHangDonVi;
+    // console.log(hangChuc)
+    switch (hangTram){
+        case 1 :
+            cachDocHangTram = "Một Trăm";
+            break;
+        case 2 :
+            cachDocHangTram = "Hai Trăm";
+            break;
+        case 3 :
+            cachDocHangTram = "Ba Trăm";
+            break;
+        case 4 :
+            cachDocHangTram = "Bốn Trăm";
+            break;
+        case 5 :
+            cachDocHangTram = "Năm Trăm";
+            break;
+        case 6 :
+            cachDocHangTram = "Sáu Trăm";
+            break;
+        case 7 :
+            cachDocHangTram = "Bảy Trăm";
+            break;
+        case 8 :
+            cachDocHangTram = "Tám Trăm";
+            break;
+        case 9 :
+            cachDocHangTram = "Chín Trăm";
+            break;
+        default :
+            cachDocHangTram = "Nhập sai";
+    }
+    switch (hangChuc){
+        case 1 :
+            cachDocHangChuc = "Mười";
+            break;
+        case 2 :
+            cachDocHangChuc = "Hai Mươi";
+            break;
+        case 3 :
+            cachDocHangChuc = "Ba Mươi";
+            break;
+        case 4 :
+            cachDocHangChuc = "Bốn Mươi";
+            break;
+        case 5 :
+            cachDocHangChuc = "Năm Mươi";
+            break;
+        case 6 :
+            cachDocHangChuc = "Sáu Mươi";
+            break;
+        case 7 :
+            cachDocHangChuc = "Bảy Mươi";
+            break;
+        case 8 :
+            cachDocHangChuc = "Tám Mươi";
+            break;
+        case 9 :
+            cachDocHangChuc = "Chín Mươi";
+            break;
+        case 0 : 
+            if (hangChuc === 0  && hangDonVi ===0) {
+                cachDocHangChuc = "";
+            } else {cachDocHangChuc = "Lẻ";}
+            break;
+        default :
+            cachDocHangChuc = "Nhập sai";
+    }
+    switch (hangDonVi){
+        case 1 :
+            if ((hangChuc === 0 || hangChuc === 1)) {
+                cachDocHangDonVi = "Một";;
+            } else {cachDocHangDonVi = "Mốt";}
+            break;
+        case 2 :
+            cachDocHangDonVi = "Hai";
+            break;
+        case 3 :
+            cachDocHangDonVi = "Ba";
+            break;
+        case 4 :
+            cachDocHangDonVi = "Bốn";
+            break;
+        case 5 :
+            if (hangTram === 1 && hangChuc === 0) {
+                cachDocHangDonVi = "Năm";;
+            } else {cachDocHangDonVi = "Lăm";}
+            break;
+            break;
+        case 6 :
+            cachDocHangDonVi = "Sáu";
+            break;
+        case 7 :
+            cachDocHangDonVi = "Bảy";
+            break;
+        case 8 :
+            cachDocHangDonVi = "Tám";
+            break;
+        case 9 :
+            cachDocHangDonVi = "Chín";
+            break;
+        case 0 : 
+            cachDocHangDonVi = "";
+            break;
+        default :
+            cachDocHangDonVi = "Nhập sai";
+    }
+    var info = cachDocHangTram + " " + cachDocHangChuc + " " + cachDocHangDonVi;
+    document.getElementById("show8").innerHTML = info;
+    
 }
