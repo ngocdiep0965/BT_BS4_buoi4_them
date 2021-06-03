@@ -201,28 +201,190 @@ document.getElementById("click5").onclick = function(event) {
     
 }
 
-// bài 1 slide 32
+// bài 1 slide 32A
+/*function layGiaTri() {
+    var dateInput = document.getElementById("today").value;
+    const mangsaukhicat = dateInput.split('-') ;
+    var year = mangsaukhicat[0];
+    var month = mangsaukhicat[1];
+    var day = mangsaukhicat[2];
+    year = parseInt(year);
+    month = parseInt(month);
+    day = parseInt(day);
+};*/
 document.getElementById("click6").onclick = function(event) {
     event.preventDefault();
+    // layGiaTri();
     var dateInput = document.getElementById("today").value;
-    const year = dateInput.split('-', 2) ;
-    // const month = parseInt(dateInput.split('-',2)) ;
-    // const day = parseInt(dateInput.split('-',3)) ;
-    console.log(year);
-    // console.log(month);
-    // console.log(day);
-    
+    const mangSauKhiCat = dateInput.split('-') ;
+    var year = mangSauKhiCat[0];
+    var month = mangSauKhiCat[1];
+    var day = mangSauKhiCat[2];
+    year = parseInt(year);
+    month = parseInt(month);
+    day = parseInt(day);
+    switch (month) {
+        case 1:
+            if (day === 1){
+                month = 12;
+                day = 31;
+                year = year - 1;
+                document.getElementById("show6").innerHTML = year + "/" + month + "/" +day;
+            } else {
+                day = day - 1;
+                document.getElementById("show6").innerHTML = year + "/" + month + "/" +day;
+            }
+            break;
+        case 2:
+        case 4:
+        case 6:
+        case 8:
+        case 9:
+        case 11:
+            if (day === 1){
+                month = month - 1;
+                day = 31;
+                document.getElementById("show6").innerHTML = year + "/" + month + "/" +day;
+            } else {
+                day = day - 1;
+                document.getElementById("show6").innerHTML = year + "/" + month + "/" +day;
+            }
+            break;
+        case 3:
+            if (day === 1){
+                month = month - 1;
+                day = 28;
+                document.getElementById("show6").innerHTML = year + "/" + month + "/" +day;
+            } else {
+                day = day - 1;
+                document.getElementById("show6").innerHTML = year + "/" + month + "/" +day;
+            }
+            break;
+        case 05:
+        case 07:
+        case 10:
+        case 12:
+            if (day === 1){
+                month = month -1;
+                day = 30;
+            document.getElementById("show6").innerHTML = year + "/" + month + "/" +day;
+            } else {
+                day = day - 1;
+                document.getElementById("show6").innerHTML = year + "/" + month + "/" +day;
+            }
+            break;
+        default :
+            document.getElementById("show6").innerHTML = "nhập sai!";
+    }
+}
+document.getElementById("click6_1").onclick = function(event) {
+    event.preventDefault();
+    // layGiaTri();
+    var dateInput = document.getElementById("today").value;
+    const mangSauKhiCat = dateInput.split('-') ;
+    var year = mangSauKhiCat[0];
+    var month = mangSauKhiCat[1];
+    var day = mangSauKhiCat[2];
+    year = parseInt(year);
+    month = parseInt(month);
+    day = parseInt(day);
+    switch (month) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+            if (day === 31){
+                month = month + 1;
+                day = 1;
+                document.getElementById("show6").innerHTML = year + "/" + month + "/" +day;
+            } else {
+                day = day + 1;
+                document.getElementById("show6").innerHTML = year + "/" + month + "/" +day;
+            }
+            break;
+        case 2:
+            if (day === 28){
+                month = month + 1;
+                day = 1;
+                document.getElementById("show6").innerHTML = year + "/" + month + "/" +day;
+            } else {
+                day = day + 1;
+                document.getElementById("show6").innerHTML = year + "/" + month + "/" +day;
+            }
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            if (day === 30){
+                month = month + 1;
+                day = 1;
+                document.getElementById("show6").innerHTML = year + "/" + month + "/" +day;
+            } else {
+                day = day + 1;
+                document.getElementById("show6").innerHTML = year + "/" + month + "/" +day;
+            }
+            break;
+        case 12:
+            if (day === 31){
+                month = 1;
+                day = 1;
+                year = year + 1;
+                document.getElementById("show6").innerHTML = year + "/" + month + "/" +day;
+            } else {
+                day = day + 1;
+                document.getElementById("show6").innerHTML = year + "/" + month + "/" +day;
+            }
+            break;
+        default :
+            document.getElementById("show6").innerHTML = "nhập sai!";
+    }
 }
 
 
+// bài 2 slide 32A
+document.getElementById("click7").onclick = function(event) {
+    event.preventDefault();
+    var valueInput = document.getElementById("randomMonth").value;
+    const mangDaCat = valueInput.split('/') ;
+    var nam = mangDaCat[1] ;
+    var thang = mangDaCat[0] ;
+    nam = parseInt(nam);
+    thang = parseInt(thang);
+    // console.log(nam, thang);
+    var namNhuan = nam % 4;
+    switch (thang){
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            document.getElementById("show7").innerHTML = "Tháng " + thang + " Năm " + nam + " có 31 ngày.";
+            break;
+        case 2:
+            if (namNhuan === 0){
+                document.getElementById("show7").innerHTML = "Tháng " + thang + " Năm " + nam + " có 29 ngày.";    
+            } else {
+                document.getElementById("show7").innerHTML = "Tháng " + thang + " Năm " + nam + " có 28 ngày.";
+            }
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            document.getElementById("show7").innerHTML = "Tháng " + thang + " Năm " + nam + " có 30 ngày.";
+            break;   
+        default:
+            document.getElementById("show7").innerHTML = "nhập sai!";
 
 
-
-
-
-
-
-
+    }
+    
+}
 
 // bài 3 slide 32
 document.getElementById("click8").onclick = function(event) {
@@ -341,5 +503,74 @@ document.getElementById("click8").onclick = function(event) {
     }
     var info = cachDocHangTram + " " + cachDocHangChuc + " " + cachDocHangDonVi;
     document.getElementById("show8").innerHTML = info;
+    
+}
+
+// bài 4 slide 32A
+document.getElementById("click9").onclick = function(event) {
+    event.preventDefault();
+    var name1 = document.getElementById("name1").value;
+    var name2 = document.getElementById("name2").value;
+    var name3 = document.getElementById("name3").value;
+    var value1 = document.getElementById("nhaSV1").value;
+    var value2 = document.getElementById("nhaSV2").value;
+    var value3 = document.getElementById("nhaSV3").value;
+    var valueTrg = document.getElementById("truongDH").value;
+    const valueDaCat1 = value1.split(',') ;
+    const valueDaCat2 = value2.split(',') ;
+    const valueDaCat3 = value3.split(',') ;
+    const valueDaCatTrg = valueTrg.split(',') ;
+    var x1 = valueDaCat1[0] ;
+    var y1 = valueDaCat1[1] ;
+    var x2 = valueDaCat2[0] ;
+    var y2 = valueDaCat2[1] ;
+    var x3 = valueDaCat3[0] ;
+    var y3 = valueDaCat3[1] ;
+    var xT = valueDaCatTrg[0] ;
+    var yT = valueDaCatTrg[1] ;
+    function chuyenGiaTri(a,b){
+        a =parseInt(a);
+        b =parseInt(b);
+    }
+    chuyenGiaTri(x1,y1);
+    chuyenGiaTri(x2,y2);
+    chuyenGiaTri(x3,y3);
+    // console.log(x1, y1, x2, y2, x3, y3);
+    var khoangCach1DenTrg = parseInt(Math.sqrt(((xT-x1)*(xT-x1)) + ((yT-y1)*(yT-y1)))) ;
+    var khoangCach2DenTrg = parseInt(Math.sqrt(((xT-x2)*(xT-x2)) + ((yT-y2)*(yT-y2))));
+    var khoangCach3DenTrg = parseInt(Math.sqrt(((xT-x3)*(xT-x3)) + ((yT-y3)*(yT-y3))));
+    var info;
+    if (khoangCach1DenTrg < khoangCach2DenTrg ){
+        if (khoangCach2DenTrg < khoangCach3DenTrg ){
+            info ="<div>Nhà sinh viên " + name3 + " cách trường xa nhất, với khoảng cách " + khoangCach3DenTrg + "km.</div>" ;
+            document.getElementById("show9").innerHTML = info;
+        } else if(khoangCach2DenTrg == khoangCach3DenTrg){
+            info ="<div>Nhà sinh viên " + name2 + " và " + name3 + " cách trường xa nhất, với khoảng cách " + khoangCach3DenTrg + "km.</div>" ;
+            document.getElementById("show9").innerHTML = info;
+        } else {
+            info ="<div>Nhà sinh viên " + name2 + " cách trường xa nhất, với khoảng cách " + khoangCach2DenTrg + "km.</div>" ;
+            document.getElementById("show9").innerHTML = info;
+        }
+    } else if(khoangCach1DenTrg == khoangCach2DenTrg){
+        if (khoangCach2DenTrg < khoangCach3DenTrg ){
+            info ="<div>Nhà sinh viên " + name3 + " cách trường xa nhất, với khoảng cách " + khoangCach3DenTrg + "km.</div>" ;
+            document.getElementById("show9").innerHTML = info;
+        } else if(khoangCach2DenTrg == khoangCach3DenTrg){
+            info ="<div>Nhà cả 3 sinh viên có khoảng cách đến trường bằng nhau, với khoảng cách " + khoangCach3DenTrg + "km.</div>" ;
+            document.getElementById("show9").innerHTML = info;
+        } else {
+            info ="<div>Nhà sinh viên " + name1 + " và " + name2 + " cách trường xa nhất, với khoảng cách " + khoangCach2DenTrg + "km.</div>" ;
+            document.getElementById("show9").innerHTML = info;
+        }
+    } else if(khoangCach1DenTrg < khoangCach3DenTrg) {
+        info ="<div>Nhà sinh viên " + name3 + " cách trường xa nhất, với khoảng cách " + khoangCach3DenTrg + "km.</div>" ;
+        document.getElementById("show9").innerHTML = info;
+        } else if(khoangCach1DenTrg == khoangCach3DenTrg){
+            info ="<div>Nhà sinh viên " + name1 + " và " + name3 + " cách trường xa nhất, với khoảng cách " + khoangCach3DenTrg + "km.</div>" ;
+            document.getElementById("show9").innerHTML = info;
+        } else {
+            info ="<div>Nhà sinh viên " + name1 + " cách trường xa nhất, với khoảng cách " + khoangCach1DenTrg + "km.</div>" ;
+            document.getElementById("show9").innerHTML = info;
+    }
     
 }
